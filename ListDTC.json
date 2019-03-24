@@ -1,0 +1,93 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Get DTCs of a given vehicle",
+        "description": "If filter.fromReportedTimestamp and filter.toReportedTimestamp are used, the operation returns only DTC status changes during the range requested. For instance, if there are DTCs reported before the filter.fromReportedTimestamp, and no status change recorded in the requested date-range, then the operation does not return any DTCs. If there is a status change for any DTCs within the requested date-range, then all DTCs are reported.",
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0"
+        },
+        "version": "1.0.0"
+    },
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/vehicles/{ID}/dtcs": {
+            "get": {
+                "summary": "Get a Widget",
+                "description": "Gets the details of a single instance of a DTC.",
+                "operationId": "getWidget",
+                "responses": {
+                    "200": {
+                        "description": "Successful response - returns a single DTC.",
+                        "schema": {
+                            "$ref": "#/definitions/Dtcs"
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "ID",
+                    "in": "path",
+                    "description": "The id of the vehicle for which you want to get DTC information",
+                    "required": true,
+                    "type": "string"
+                },
+                {
+                    "name": "X-External-Reference",
+                    "in": "header",
+                    "description": "The source application external reference for the operation.",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "Dtcs": {
+            "description": "<listDtc> collection of dtcs",
+            "type": "object",
+            "properties": {
+                "ListDTCs": {
+                    "description": "array of stcs",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ListDtc"
+                    }
+                }
+            }
+        },
+        "ListDtc": {
+            "description": "Represents the confirmed and pending DTCs reported by a device for a given vehicle",
+            "type": "object",
+            "properties": {
+                "classCode": {
+                    "description": "DTC class code recorded by the device",
+                    "type": "string"
+                },
+                "classDescription": {
+                    "description": "Description of DTC class code",
+                    "type": "string"
+                },
+                "code": {
+                    "description": "DTC code recorded by the device",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the DTC. Description is available for generic codes. Default description is the On-board diagnostics(OBD) standard description.",
+                    "type": "string"
+                }
+            },
+            "example": {
+                "classCode": "abc123",
+                "classDescription": "engine managemetn code",
+                "code": "123",
+                "description": "somethings wrong"
+            }
+        }
+    }
+}
