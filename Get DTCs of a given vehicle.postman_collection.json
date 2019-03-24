@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "652708aa-53fa-4008-abe8-03f712b70898",
+		"name": "Get DTCs of a given vehicle",
+		"description": "version=1.0 If filter.fromReportedTimestamp and filter.toReportedTimestamp are used, the operation returns only DTC status changes during the range requested. For instance, if there are DTCs reported before the filter.fromReportedTimestamp, and no status change recorded in the requested date-range, then the operation does not return any DTCs. If there is a status change for any DTCs within the requested date-range, then all DTCs are reported.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "vehicles",
+			"item": [
+				{
+					"name": "Get a Widget",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http:///vehicles/:ID/dtcs",
+							"host": [
+								"http:"
+							],
+							"port": "",
+							"path": [
+								"",
+								"",
+								"vehicles",
+								":ID",
+								"dtcs"
+							],
+							"variable": [
+								{
+									"key": "ID",
+									"value": "{{ID}}"
+								}
+							]
+						},
+						"description": "Gets the details of a single instance of a DTC."
+					},
+					"response": [
+						{
+							"name": "Get a Widget",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http:///vehicles/:ID/dtcs",
+									"host": [
+										"http:"
+									],
+									"port": "",
+									"path": [
+										"",
+										"",
+										"vehicles",
+										":ID",
+										"dtcs"
+									],
+									"variable": [
+										{
+											"key": "ID",
+											"value": ""
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "[\n    {\n        \"classCode\": \"abc123\",\n        \"classDescription\": \"engine managemetn code\",\n        \"code\": \"123\",\n        \"description\": \"somethings wrong\"\n    },\n    {\n        \"classCode\": \"def567\",\n        \"classDescription\": \"low battery code\",\n        \"code\": \"567\",\n        \"description\": \"battery registering low charge\"\n    },\n    {\n        \"classCode\": \"def568\",\n        \"classDescription\": \"battery cell terminal\",\n        \"code\": \"568\",\n        \"description\": \"battery cell failing to charge\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "Folder for vehicles"
+		}
+	]
+}
